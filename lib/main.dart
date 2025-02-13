@@ -10,8 +10,10 @@ void main() {
 class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TaskCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => TaskCubit()..getList())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: TodoListScreen(),
