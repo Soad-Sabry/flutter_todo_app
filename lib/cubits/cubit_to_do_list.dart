@@ -40,37 +40,14 @@ class TaskCubit extends Cubit<StatesToDoList> {
         },
             (tasks) {
           if (tasks.isEmpty) {
-            emit(InitialState()); // إذا كانت القائمة فارغة، العودة للحالة الأولية
+            emit(InitialState());
           } else {
             emit(TaskDeletedState());
-            getList(); // تأكد من استدعاء getList لتحديث القائمة بعد الحذف
+            getList();
           }
         }
     );
   }
-
-  // void removeTask(int index) {
-  //
-  //   mainRepoImp.removeTask(index).fold(
-  //       (tasks){
-  //         if(tasks.isEmpty) {
-  //           emit(InitialState());
-  //         }
-  //       else {
-  //       emit(TaskDeletedState());
-  //     //  getList();
-  //       }
-  //
-  //
-  //   },(error){
-  //
-  //     emit(TaskRemoveError(error.toString()));
-  //   },
-  //   );
-  //
-  //
-  //
-  //   }
 
   void getList() {
     emit(LoadingListState());
